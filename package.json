@@ -1,20 +1,14 @@
 {
-  "name": "@litsi/source",
-  "version": "0.0.0",
+  "name": "litsi",
+  "version": "1.0.0",
+  "description": "🌥️ Litsi is an extended markdown editor based on Prosemirror and Lit, with easy to add custom component, inputrules, and dragable element (notion like).",
+  "main": "index.js",
+  "repository": "https://github.com/ahsanu123/litsi.git",
+  "author": "Ahsanu Amala <caasperahsanuamala5@gmail.com>",
   "license": "MIT",
-  "scripts": {},
-  "private": false,
-  "dependencies": {},
-  "devDependencies": {
-    "@nx/js": "20.1.3",
-    "@swc-node/register": "~1.9.1",
-    "@swc/core": "~1.5.7",
-    "@swc/helpers": "~0.5.11",
-    "nx": "20.1.3",
-    "tslib": "^2.3.0",
-    "typescript": "~5.5.2"
-  },
+  "private": "true",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ]
 }
