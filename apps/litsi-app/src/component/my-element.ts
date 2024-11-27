@@ -22,7 +22,7 @@ export class MyElement extends LitElement {
     `
   }
 
-  private _onClick() {
+  private _onClick(e: Event) {
     this.count++
   }
 }
