@@ -1,10 +1,18 @@
-import { EditorState } from 'prosemirror-state'
+import { EditorState, Plugin } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { DOMParser as ProseDOMParser, Node as ProseNode, Schema } from 'prosemirror-model'
 import { baseKeymap, toggleMark } from 'prosemirror-commands'
 import { keymap } from 'prosemirror-keymap'
 import { litsiSchema } from './schema';
 import { addLitsiElement, toggleHeadingLevel } from '../commands'
+import { MenuItem } from '../component'
+
+const topBarPlugin: Plugin = new Plugin({
+  view(editorView) {
+    const menuItem = new MenuItem(editorView, toggleMark(litsiSchema.marks.strong))
+    return menuItem
+  },
+})
 
 export class LitsiEditor {
   private editorView: EditorView
@@ -22,7 +30,8 @@ export class LitsiEditor {
           'Ctrl-b': toggleMark(litsiSchema.marks.strong),
           'Ctrl-l': addLitsiElement,
           ...baseKeymap
-        })
+        }),
+        topBarPlugin
       ]
     });
 

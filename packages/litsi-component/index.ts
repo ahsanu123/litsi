@@ -1,1 +1,2 @@
-export * from './lib/component/litsi-element';
+export * from './lib/component/litsi-button';
+export * from './lib/util-types.d';

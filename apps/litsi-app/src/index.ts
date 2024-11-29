@@ -1,1 +1,1 @@
-export * from './component/my-element'
+export * from './component/litsi-topbar'
