@@ -1,16 +1,30 @@
 import { EditorState, Plugin } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
-import { DOMParser as ProseDOMParser, Node as ProseNode, Schema } from 'prosemirror-model'
+import { DOMParser as ProseDOMParser } from 'prosemirror-model'
 import { baseKeymap, toggleMark } from 'prosemirror-commands'
 import { keymap } from 'prosemirror-keymap'
 import { litsiSchema } from './schema';
-import { addLitsiElement, toggleHeadingLevel } from '../commands'
-import { MenuItem } from '../component'
+import { addLitsiElement, toggleHeadingLevel, topbarBoldButtonCommand } from '../commands'
+import { TopbarFunctionEventMap } from '../component/litsi-topbar-event'
+import { LitsiBoldButton, TopBarContainer } from '../component'
+import { LitElement } from 'lit'
 
-const topBarPlugin: Plugin = new Plugin({
+const topBarMenus: Plugin = new Plugin({
   view(editorView) {
-    const menuItem = new MenuItem(editorView, toggleMark(litsiSchema.marks.strong))
-    return menuItem
+    const topbarMapFunction: TopbarFunctionEventMap = new Map([
+      ['bold', topbarBoldButtonCommand]
+    ])
+
+    const menuItemElement: LitElement[] = [
+      new LitsiBoldButton(),
+    ]
+
+    const topBarContainer = new TopBarContainer(
+      editorView,
+      menuItemElement,
+      topbarMapFunction
+    )
+    return topBarContainer
   },
 })
 
@@ -22,7 +36,7 @@ export class LitsiEditor {
     content: string,
   ) {
     const state = EditorState.create({
-      doc: ProseDOMParser.fromSchema(litsiSchema).parse(new DOMParser().parseFromString("initial text", 'text/html')),
+      doc: ProseDOMParser.fromSchema(litsiSchema).parse(new DOMParser().parseFromString("Litsi - Extended Markdown Editor", 'text/html')),
       schema: litsiSchema,
       plugins: [
         keymap({
@@ -31,7 +45,7 @@ export class LitsiEditor {
           'Ctrl-l': addLitsiElement,
           ...baseKeymap
         }),
-        topBarPlugin
+        topBarMenus,
       ]
     });
 

@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { LitsiEditor } from './src/editor'
+import './index.scss';
 import './src/index';
 
 @customElement('main-app')
@@ -10,7 +11,6 @@ export class MainApp extends LitElement {
     <div
       class='litsi-main-container'
     >
-      <!-- <litsi-topbar></litsi-topbar> -->
     </div>
     `
   }

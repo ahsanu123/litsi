@@ -1,0 +1,19 @@
+* {
+  font-family: Parkinsans
+}
+
+p {
+  margin: 5px 0;
+}
+
+div[contenteditable=true][class*=ProseMirror] {
+
+  padding: 2px 15px;
+  margin: 8px 5px;
+
+  h1 {
+    margin: 7px 0;
+  }
+
+  &:focus {}
+}

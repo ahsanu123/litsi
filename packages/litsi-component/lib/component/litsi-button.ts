@@ -39,7 +39,7 @@ export class LitsiButton extends LitElement {
       bubbles: true,
       composed: true
     };
-    const event = new LitsiCustomEvent('litsi-button_onclick', options)
+    const event = new LitsiCustomEvent('litsi-button-onclick', options)
 
     this.dispatchEvent(event)
   }
@@ -49,7 +49,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'litsi-button': LitsiButton
   }
-  interface CustomEventMap {
-    'litsi-button_onclick': LitsiButtonOnClickData
+  interface GlobalEventHandlersEventMap {
+    'litsi-button-onclick': LitsiButtonOnClickData
   }
 }
