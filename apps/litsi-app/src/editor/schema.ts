@@ -19,7 +19,7 @@ const nodes: { [key: string]: NodeSpec } = {
   paragraph: {
     group: "block",
     content: "inline*",
-    toDOM() { return ["p", 0] },
+    toDOM() { return ["p", { class: 'base-paragraph' }, 0] },
     parseDOM: [{ tag: "p" }]
   },
   heading: {
@@ -36,7 +36,7 @@ const nodes: { [key: string]: NodeSpec } = {
       { tag: "h6", attrs: { level: 6 } },
     ],
     toDOM(node) {
-      return ["h" + <string>node.attrs.level, 0];
+      return ["h" + <string>node.attrs.level, { class: 'heading' }, 0];
     },
   },
   boring_paragraph: {
@@ -61,6 +61,15 @@ const marks: { [key: string]: MarkSpec } = {
       return ["strong"];
     },
   },
+  em: {
+    parseDOM: [
+      { tag: 'i' },
+      { tag: 'em' }
+    ],
+    toDOM() {
+      return ['em']
+    }
+  }
 }
 
 export const litsiSchema = new Schema({

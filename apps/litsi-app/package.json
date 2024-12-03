@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.3",
+    "boxicons": "^2.1.4",
     "highlight.js": "^11.10.0",
     "lit": "^3.2.1",
     "litsi-component": "0.0.1",
@@ -22,7 +23,9 @@
     "prosemirror-model": "^1.23.0",
     "prosemirror-state": "^1.4.3",
     "prosemirror-transform": "^1.10.2",
-    "prosemirror-view": "^1.37.0"
+    "prosemirror-view": "^1.37.0",
+    "rxjs": "^7.8.1",
+    "sakura.css": "^1.5.0"
   },
   "devDependencies": {
     "sass": "^1.81.0",

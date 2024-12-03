@@ -5,3 +5,7 @@ import { TopbarHandleFunction } from "../component/litsi-topbar-event"
 export const topbarBoldButtonCommand: TopbarHandleFunction = (event) => {
   return toggleMark(litsiSchema.marks.strong)
 }
+export const topbarItalicButtonCommand: TopbarHandleFunction = (event) => {
+  return toggleMark(litsiSchema.marks.em)
+}
+

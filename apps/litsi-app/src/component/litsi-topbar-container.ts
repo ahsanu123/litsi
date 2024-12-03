@@ -3,8 +3,7 @@ import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { EditorView } from 'prosemirror-view'
 import { TopbarCustomEventData, TopbarFunctionEventMap } from "./litsi-topbar-event";
-import { provide } from "@lit/context";
-import { topbarEditorViewContext } from "./litsi-menu-context";
+import { $editorView } from "./litsi-menu-context";
 import 'litsi-component'
 
 export class TopBarContainer implements PluginView {
@@ -32,6 +31,7 @@ export class TopBarContainer implements PluginView {
 
   update(view: EditorView, prevState: EditorState) {
     this.topbarContainer.editorView = view
+    $editorView.next(view)
   }
 
   destroy() { }
@@ -45,7 +45,7 @@ export class LitsiTopbar extends LitElement {
     type: EditorView,
     hasChanged: (value, oldValue) => true // TODO: Why this make reactive update work??, because its big object??
   })
-  editorView!: any// cast this into EditorView , dont know why  it need to any, example show it work with typed object
+  editorView!: EditorView
 
   @property({
     type: Object,
@@ -61,7 +61,7 @@ export class LitsiTopbar extends LitElement {
       >
         <slot></slot>
       </div>
-      <p>${JSON.stringify((this.editorView as EditorView).state.toJSON())}</p>
+      <hr/>
     `
   }
   private _handleTopbarDispatchEvent(ev: TopbarCustomEventData) {

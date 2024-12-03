@@ -7,8 +7,8 @@ import { litsiSchema } from "../editor/schema";
 import { litsiSakuraButtonStyle } from "../styles/litsi-sakura-button";
 import 'boxicons'
 
-@customElement('litsi-bold-button')
-export class LitsiBoldButton extends LitElement {
+@customElement('litsi-italic-button')
+export class LitsiItalicButton extends LitElement {
 
   #subscription: Subscription
 
@@ -43,7 +43,7 @@ export class LitsiBoldButton extends LitElement {
       <button
         @click=${this._onBoldButtonClicked}
       >
-        ${this.hasBold ? 'Unbold' : 'Bold'}
+        ${this.hasBold ? 'Unitalic' : 'Italic'}
       </button>
     `
   }
@@ -51,7 +51,7 @@ export class LitsiBoldButton extends LitElement {
   private _onBoldButtonClicked(ev: Event) {
     const options: TopbarCustomEventData = {
       detail: {
-        key: 'bold'
+        key: 'italic'
       },
       bubbles: true,
       composed: true
@@ -63,7 +63,7 @@ export class LitsiBoldButton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'litsi-bold-button': LitsiBoldButton,
+    'litsi-italic-button': LitsiItalicButton
   }
 }
 
