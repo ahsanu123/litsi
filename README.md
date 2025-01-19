@@ -31,4 +31,4 @@
 - [Sakura CSS](https://oxal.org/projects/sakura/demo/)
 - [Boxicon](https://boxicons.com/)
 
-<sub>Work In Progress, Made with ♥️ by AH...</sub>
+<sub>a long project with the hope of completion. created with ♥️ by ah...</sub>
